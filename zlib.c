@@ -1,8 +1,5 @@
 // AUTOMATICALLY GENERATED, DO NOT EDIT!
-// merged from storix zlib 752c1630.
-
-// 
-
+// merged from sortix zlib 752c1630.
 #define _GNU_SOURCE
 #define Z_INSIDE_LIBZ
 #pragma GCC diagnostic warning "-Wall"
@@ -41022,4 +41019,4 @@ ZLIB_INTERNAL void z_stream_free(z_stream *strm, void *ptr)
 
 
 #line 1 "zlib_generate.go"
-#pragma GCC warning "Using generated built-in storix zlib 752c1630."
+#pragma GCC warning "Using generated built-in sortix zlib 752c1630."

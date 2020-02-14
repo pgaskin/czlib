@@ -70,11 +70,7 @@ func hzlib(files map[string][]byte, version string) (io.Reader, error) {
 	return io.MultiReader(
 		// A custom header.
 		strings.NewReader("// AUTOMATICALLY GENERATED, DO NOT EDIT!\n"),
-		strings.NewReader("// merged from storix libz "+version+".\n"),
-		// Include the license info.
-		bytes.NewReader([]byte{'\n', '/', '/', ' '}),
-		bytes.NewReader(bytes.ReplaceAll(files["COPYING.md"], []byte{'\n'}, []byte{'\n', '/', '/', ' '})),
-		bytes.NewReader([]byte{'\n', '\n'}),
+		strings.NewReader("// merged from sortix libz "+version+".\n"),
 		// Include the header.
 		bytes.NewReader(marisaH),
 	), nil
@@ -137,11 +133,7 @@ func libzlib(files map[string][]byte, version string) (io.Reader, error) {
 	return io.MultiReader(
 		// A custom header.
 		strings.NewReader("// AUTOMATICALLY GENERATED, DO NOT EDIT!\n"),
-		strings.NewReader("// merged from storix zlib "+version+".\n"),
-		// Include the license info.
-		bytes.NewReader([]byte{'\n', '/', '/', ' '}),
-		bytes.NewReader(bytes.ReplaceAll(files["LICENSE"], []byte{'\n'}, []byte{'\n', '/', '/', ' '})),
-		bytes.NewReader([]byte{'\n', '\n'}),
+		strings.NewReader("// merged from sortix zlib "+version+".\n"),
 		// Include the defines
 		strings.NewReader("#define _GNU_SOURCE\n"),
 		strings.NewReader("#define Z_INSIDE_LIBZ\n"),
@@ -154,7 +146,7 @@ func libzlib(files map[string][]byte, version string) (io.Reader, error) {
 		bytes.NewReader(zlib),
 		// Show info about the generated file.
 		strings.NewReader("#line 1 \"zlib_generate.go\"\n"),
-		strings.NewReader("#pragma GCC warning \"Using generated built-in storix zlib "+version+".\"\n"),
+		strings.NewReader("#pragma GCC warning \"Using generated built-in sortix zlib "+version+".\"\n"),
 	), nil
 }
 

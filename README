@@ -1,0 +1,6 @@
+czlib - zlib bindings for Go
+
+This is a fork of github.com/DataDog/czlib with the following changes:
+- Go modules support
+- Use storix zlib fork
+- Built-in merged zlib to simplify cross-compiling

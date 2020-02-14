@@ -8,7 +8,6 @@ import (
 )
 
 /*
-#cgo LDFLAGS: -lz
 #include "fastzlib.h"
 #include <stdlib.h>
 */

@@ -100,8 +100,11 @@ func libzlib(files map[string][]byte, version string) (io.Reader, error) {
 			dfiles[fn] = bytes.ReplaceAll(dfiles[fn], []byte("#define DROPBITS"), []byte("#undef DROPBITS\n#define DROPBITS"))
 		}
 
+		// we don't need endian.h to check endianness (and it isn't available on Windows)
+		dfiles[fn] = bytes.ReplaceAll(dfiles[fn], []byte("#include <endian.h>"), []byte("#ifndef ZLIBGEN_ENDIAN_SHIM_H\n#define ZLIBGEN_ENDIAN_SHIM_H\n#ifndef BYTE_ORDER\n#define BYTE_ORDER __BYTE_ORDER__\n#define LITTLE_ENDIAN __ORDER_LITTLE_ENDIAN__\n#define BIG_ENDIAN __ORDER_BIG_ENDIAN__\n#endif\n#endif\n"))
+
+		// add header guards
 		if strings.HasSuffix(fn, ".h") && fn != "inffixed.h" {
-			// add header guards
 			hn := "ZLIBGEN_" + strings.ToUpper(strings.TrimSuffix(fn, ".h")) + "_H"
 			dfiles[fn] = append([]byte("#ifndef "+hn+"\n#define "+hn+"\n"), append(b, []byte("#endif")...)...)
 		}

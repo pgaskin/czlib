@@ -1,3 +1,3 @@
-module github.com/geek1011/czlib
+module github.com/pgaskin/czlib
 
 go 1.13

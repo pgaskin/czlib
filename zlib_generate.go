@@ -1,6 +1,6 @@
 //+build zlib_generate
 
-// Based on geek1011/dictutil/marisa/libmarisa_generate.go
+// Based on pgaskin/dictutil/marisa/libmarisa_generate.go
 
 package main
 
